@@ -42,7 +42,14 @@ jobs:
   Analysis:
     runs-on: ubuntu-latest
 
+      
+
     steps:
+      - name: Set up .NET 7.0  
+        uses: actions/setup-dotnet@v3  
+        with:    
+          dotnet-version: 7.0.x
+          
       - name: Analyze with SonarCloud
 
         # You can pin the exact commit or the version.
