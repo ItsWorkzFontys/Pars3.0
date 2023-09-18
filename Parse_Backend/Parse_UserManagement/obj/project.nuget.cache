@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "+S1ZKtU/UxHgRpkdqFVBqYnGl4Ys9pyxJ3yfIo2qpwwSUMzE/lJbXrEx3oNeqLajMo8fabym7dTF4pbQMavLnw==",
+  "dgSpecHash": "xFfXKPc09XyuHHKjtN6qyqjgxC0pDcYgrKOtTSAqpR9qv2gwvS22wIzBR2yPe6+R2Kqtc8+1emfr5lPHr8Dnaw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\yarik\\source\\repos\\Parse_UserManagement\\Parse_UserManagement\\Parse_UserManagement.csproj",
+  "projectFilePath": "C:\\Users\\yarik\\Documents\\GitHub\\Pars3.0\\Parse_Backend\\Parse_UserManagement\\Parse_UserManagement\\Parse_UserManagement.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\yarik\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\yarik\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

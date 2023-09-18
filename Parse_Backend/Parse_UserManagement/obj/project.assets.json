@@ -864,11 +864,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yarik\\source\\repos\\Parse_UserManagement\\Parse_UserManagement\\Parse_UserManagement.csproj",
+      "projectUniqueName": "C:\\Users\\yarik\\Documents\\GitHub\\Pars3.0\\Parse_Backend\\Parse_UserManagement\\Parse_UserManagement\\Parse_UserManagement.csproj",
       "projectName": "Parse_UserManagement",
-      "projectPath": "C:\\Users\\yarik\\source\\repos\\Parse_UserManagement\\Parse_UserManagement\\Parse_UserManagement.csproj",
+      "projectPath": "C:\\Users\\yarik\\Documents\\GitHub\\Pars3.0\\Parse_Backend\\Parse_UserManagement\\Parse_UserManagement\\Parse_UserManagement.csproj",
       "packagesPath": "C:\\Users\\yarik\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yarik\\source\\repos\\Parse_UserManagement\\Parse_UserManagement\\obj\\",
+      "outputPath": "C:\\Users\\yarik\\Documents\\GitHub\\Pars3.0\\Parse_Backend\\Parse_UserManagement\\Parse_UserManagement\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\yarik\\AppData\\Roaming\\NuGet\\NuGet.Config",
