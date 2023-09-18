@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parse_UserManagement", "Parse_UserManagement\Parse_UserManagement.csproj", "{1D199FBB-5789-4AE6-A2FC-99CE45CF082F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pars_UserManagement", "Pars_UserManagement\Pars_UserManagement.csproj", "{EFAB559A-A65C-44B9-BBC8-2D14DB8575B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1D199FBB-5789-4AE6-A2FC-99CE45CF082F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D199FBB-5789-4AE6-A2FC-99CE45CF082F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D199FBB-5789-4AE6-A2FC-99CE45CF082F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D199FBB-5789-4AE6-A2FC-99CE45CF082F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFAB559A-A65C-44B9-BBC8-2D14DB8575B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFAB559A-A65C-44B9-BBC8-2D14DB8575B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFAB559A-A65C-44B9-BBC8-2D14DB8575B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFAB559A-A65C-44B9-BBC8-2D14DB8575B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {F1D76A2C-4C78-41EB-83CA-79867A6D1879}
+		SolutionGuid = {16F83A69-EE5F-46D2-8E68-E3D2D0BD6CFE}
 	EndGlobalSection
 EndGlobal
