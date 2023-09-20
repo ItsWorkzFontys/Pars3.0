@@ -52,7 +52,9 @@ jobs:
         uses: actions/setup-java@v3.12.0
         with:
           # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
-          java-version: 17.0.x
+          java-version: '17'
+          # The path to the `.java-version` file. See examples of supported syntax in README file
+          distribution: 'microsoft'
       - name: Analyze with SonarCloud
         # You can pin the exact commit or the version.
         # uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
