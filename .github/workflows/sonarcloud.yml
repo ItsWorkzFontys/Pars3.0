@@ -44,19 +44,15 @@ jobs:
       
     steps:
       - uses: actions/checkout@v3
-      
-      # - name: Setup .NET
-      #   uses: actions/setup-dotnet@v3
-      #   with:
-      #     dotnet-version: 7.0.x
-          
-      # - name: Restore dependencies
-      #   run: dotnet restore
-      #   working-directory: ./Pars_Backend/Pars_UserManagement
-      # - name: Build
-      #   run: dotnet build --no-restore
-      #   working-directory: ./Pars_Backend/Pars_UserManagement
-
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3.8.1
+        with:
+          node-version: 18.x
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.12.0
+        with:
+          # The Java version to set up. Takes a whole or semver Java version. See examples of supported syntax in README file
+          java-version: 17.0.x
       - name: Analyze with SonarCloud
         # You can pin the exact commit or the version.
         # uses: SonarSource/sonarcloud-github-action@de2e56b42aa84d0b1c5b622644ac17e505c9a049
