@@ -1,13 +1,14 @@
-FROM node:lts-alpine3.14
-
-WORKDIR /app
+FROM node:16-alpine as development
 
 COPY package*.json ./
+RUN npm ci
 
-RUN yarn install
+FROM node:16-alpine As build
 
+COPY package*.json ./
+COPY --from=development /node_modules ./node_modules
 COPY . .
 
-EXPOSE 3000
+RUN npm prune --production
 
-CMD ["npm" , "start"]
+CMD ["npm", "start"]
