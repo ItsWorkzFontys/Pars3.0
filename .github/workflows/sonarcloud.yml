@@ -51,7 +51,7 @@ jobs:
 
       - name: Navigate Folder
         run: |
-          cd ../../Pars_Backend/Pars_UserManagement
+          cd ./Pars_Backend/Pars_UserManagement
           
       - name: Restore dependencies
         run: dotnet restore
