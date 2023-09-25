@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  pars_usermanagement:
+    image: ${DOCKER_REGISTRY-}parsusermanagement
+    build:
+      context: .
+      dockerfile: Pars_UserManagement/Dockerfile
