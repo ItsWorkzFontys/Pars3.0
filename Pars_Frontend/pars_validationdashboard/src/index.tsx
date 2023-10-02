@@ -13,21 +13,6 @@ root.render(
     <App />
   </React.StrictMode>
 );
-let dasdf = 4;
-dasdf =2 ;
-dasdf =2 ;
-
-dasdf =2 ;
-
-dasdf =2 ;
-
-
-dasdf =2 ;
-
-dasdf =2 ;
-
-dasdf =2 ;
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
