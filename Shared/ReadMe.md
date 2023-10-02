@@ -1,0 +1,1 @@
+This is the shared folder to share general information about the entire project
