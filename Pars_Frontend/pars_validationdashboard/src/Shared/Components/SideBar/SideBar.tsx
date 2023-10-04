@@ -1,8 +1,9 @@
 import React from "react";
+import './sideBar.scss'
 
 function SideBar(): JSX.Element {
     return(
-        <div>
+        <div className="sideBar">
            this is a SideBar
         </div>
     );

@@ -1,8 +1,9 @@
 import React from 'react';
+import './content.scss';
 
 function Content(): JSX.Element {
     return(
-        <div>
+        <div className='content'>
             this is content
         </div>
     );
