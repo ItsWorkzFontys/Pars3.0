@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  Pars_UserManagement:
+    image: parsusermanagement:latest
+    build:
+      context: .
+      dockerfile: Pars_UserManagement/Pars_UserManagement/Dockerfile
+    ports:
+      - 8080:8080
+
+
+
