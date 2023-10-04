@@ -1,5 +1,16 @@
 @import '_variables';
 
 .App {
-  text-align: center;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  .left {
+    flex: 0;
+    min-width: 10vw;
+    border: 1px black solid;
+  }
+  .right {
+    flex: 1;
+    border: 1px red solid;
+  }
 }
