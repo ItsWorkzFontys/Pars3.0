@@ -2,19 +2,17 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
-EXPOSE 8081
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Pars_ValidationDashboard/Pars_ValidationDashboard.csproj", "Pars_ValidationDashboard/"]
-RUN dotnet restore "Pars_ValidationDashboard/Pars_ValidationDashboard.csproj"
+COPY ["Pars_ValidationDashboard/Pars_ValidationDashboard/Pars_ValidationDashboard.csproj", "Pars_ValidationDashboard/Pars_ValidationDashboard/"]
+RUN dotnet restore "Pars_ValidationDashboard/Pars_ValidationDashboard/Pars_ValidationDashboard.csproj"
 COPY . .
 WORKDIR "/src/Pars_ValidationDashboard"
-RUN dotnet build "Pars_ValidationDashboard.csproj" -c Release -o /app/build
+RUN dotnet build "Pars_ValidationDashboard/Pars_ValidationDashboard.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Pars_ValidationDashboard.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Pars_ValidationDashboard/Pars_ValidationDashboard.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
