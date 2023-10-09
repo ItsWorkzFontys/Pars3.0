@@ -45,6 +45,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: ${{ github.repository }}.wiki
+        token: ${{ secrets.WIKITOKEN }}
     - name: Download HTML file
       uses: actions/download-artifact@v2
       with:
@@ -57,6 +58,4 @@ jobs:
         git config user.email "github-actions@github.com"
         git add .
         git commit -m "Update wiki"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.WIKITOKEN }}
+        git push https://${{ secrets.WIKITOKEN }}@github.com/${{ github.repository }}.wiki.git
