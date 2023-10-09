@@ -1,6 +1,8 @@
 import React from 'react';
 import Sidebar from './Components/SideBar/Sidebar'
 import Content from './Components/Content/Content';
+import { Link, Router, Route, Routes } from 'react-router-dom'
+
 import './Styling/App.scss';
 
 function App(): JSX.Element {
@@ -12,6 +14,11 @@ function App(): JSX.Element {
       <div className='right'>
         <Content></Content>
       </div>
+      <Router>
+        <Routes>
+          <Route path='/' />
+        </Routes>
+      </Router>
     </div>
   );
 }

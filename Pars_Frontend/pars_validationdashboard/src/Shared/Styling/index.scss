@@ -13,6 +13,12 @@ body {
 
 }
 
+a {
+  text-decoration: none;
+  outline: none;
+  color: $primary-text;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
