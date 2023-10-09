@@ -1,8 +1,7 @@
 @import './src/Shared/Styling/_variables.scss';
 
 .sideBar {
-    background-color: $secondaryBackground;
+    background-color: $neutral-8;
     height: 100%;
-    padding: 1em;
-    border-right: 3px solid $gray;
+    border-right: 2px solid $neutral-20;
 }

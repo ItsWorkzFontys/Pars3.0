@@ -1,13 +1,20 @@
 import React from "react";
-import './sideBar.scss'
+import './sidebar.scss'
+import SidebarHeader from "./SidebarHeader/SidebarHeader";
+import SidebarContent from "./SidebarContent/SidebarContent";
 
-function SideBar(): JSX.Element {
+function Sidebar(props:any): JSX.Element {
     return(
         <div className="sideBar">
-           this is a SideBar
+           <SidebarHeader>
+
+           </SidebarHeader>
+           <SidebarContent>
+
+           </SidebarContent>
         </div>
     );
 
 }
 
-export default SideBar;
+export default Sidebar;

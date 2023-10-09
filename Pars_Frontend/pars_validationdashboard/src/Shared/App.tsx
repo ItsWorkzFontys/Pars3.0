@@ -1,5 +1,5 @@
 import React from 'react';
-import SideBar from './Components/SideBar/SideBar';
+import Sidebar from './Components/SideBar/Sidebar'
 import Content from './Components/Content/Content';
 import './Styling/App.scss';
 
@@ -7,11 +7,9 @@ function App(): JSX.Element {
   return (
     <div className="App">
       <div className='left'>
-        <SideBar></SideBar>
+        <Sidebar></Sidebar>
       </div>
       <div className='right'>
-       
-        
         <Content></Content>
       </div>
     </div>

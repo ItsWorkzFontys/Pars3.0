@@ -1,13 +1,39 @@
-$background: #151419;
-$secondaryBackground: #022b4b;
+$neutral-0: #ffffff;
+$neutral-2: #f8f8f8;
+$neutral-4: #f4f4f4;
+$neutral-6: #f2f2f2;
+$neutral-8: #ebebeb;
+$neutral-10: #dedede;
+$neutral-20: #c8c8c8;
+$neutral-30: #a6a6a6;
+$neutral-60: #666666;
+$neutral-70: #3c3c3c;
+$neutral-80: #333333;
 
-$primary: #ffffff;
-$secondary: #1998f8;
+$neutral-alpha-2: rgba(0,0,0,0.02);
+$neutral-alpha-4: rgba(0,0,0,0.04);
+$neutral-alpha-6: rgba(0,0,0,0.06);
+$neutral-alpha-8: rgba(0,0,0,0.08);
+$neutral-alpha-10: rgba(0,0,0,0.10);
+$neutral-alpha-20: rgba(0,0,0,0.20);
+$neutral-alpha-30: rgba(0,0,0,0.30);
+$neutral-alpha-60: rgba(0,0,0,0.60);
+$neutral-alpha-70: rgba(0,0,0,0.70);
+$neutral-alpha-80: rgba(0,0,0,0.80);
 
-$succeed: #23534e;
-$succeed2: #183338;
+$communication-tint-40: #eff6fc;
+$communication-tint-30: #deecf9;
+$communication-tint-20: #c7e0f4;
+$communication-tint-10: #2b88d8;
+$communication-primary: #0078d4;
+$communication-shade-10: #106ebe;
+$communication-shade-20: #005a9e;
+$communication-shade-30: #004578;
 
-$warning: #431e28;
-$warning2: #2c131d;
-
-$gray: #2c2b30;
+$primary-text: rgba(0,0,0,0.90);
+$secondary-text: rgba(0,0,0,0.55);
+$disabled-text: rgba(0,0,0,0.38);
+$communication-primary-text: $communication-primary;
+$primary-text-invert: rgba(255,255,255,1);
+$secondary-text-invert: rgba(255,255,255,0.65);
+$disabled-text-invert: rgba(255,255,255,0.32);
