@@ -14,17 +14,47 @@ jobs:
     - name: Use Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18.x'
-    - name: Check Bash interpreter path
-      run: which bash
+        node-version: '18.17.1'
     - name: Install puml package globally
       run: npm install -g asciidoctor
     - name: Install asciidoctor package globally
       run: npm install -g puml
+    - name: Install Java & Graphviz Dot
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y default-jre
+        sudo apt-get install -y graphviz
     - name: Run bash script
       run: |
         sed -i -e 's/\r$//' ./Shared/Documentation/generate_documentation.sh
-        chmod +x Shared/Documentation/generate_documentation.sh
+        chmod +x ./Shared/Documentation/generate_documentation.sh
         ./Shared/Documentation/generate_documentation.sh
       shell: bash
+    - name: Upload HTML file
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-html
+        path: ./Shared/Documentation/Text/test.html
 
+  update-wiki:
+    needs: generate-docs
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout wiki
+      uses: actions/checkout@v2
+      with:
+        repository: ${{ github.repository }}.wiki
+    - name: Download HTML file
+      uses: actions/download-artifact@v2
+      with:
+        name: test-html
+    - name: Move HTML file
+      run: mv test.html Home.md
+    - name: Commit and push
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "github-actions@github.com"
+        git add .
+        git commit -m "Update wiki"
+        git push
