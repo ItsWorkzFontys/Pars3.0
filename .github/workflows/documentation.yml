@@ -36,26 +36,27 @@ jobs:
         name: test-html
         path: ./Shared/Documentation/Text/test.html
 
-  update-wiki:
+  update-gh-pages:
     needs: generate-docs
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout wiki
+    - name: Checkout gh-pages branch
       uses: actions/checkout@v2
       with:
-        repository: ${{ github.repository }}.wiki
-        token: ${{ secrets.WIKITOKEN }}
+        ref: gh-pages
     - name: Download HTML file
       uses: actions/download-artifact@v2
       with:
         name: test-html
     - name: Move HTML file
-      run: mv test.html Home.md
+      run: mv test.html index.html
     - name: Commit and push
       run: |
         git config user.name "GitHub Actions"
         git config user.email "github-actions@github.com"
         git add .
-        git commit -m "Update wiki"
-        git push https://${{ secrets.WIKITOKEN }}@github.com/${{ github.repository }}.wiki.git
+        git commit -m "Update GitHub Pages"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.WIKITOKEN }}
