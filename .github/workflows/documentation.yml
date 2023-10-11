@@ -30,11 +30,15 @@ jobs:
         chmod +x ./Shared/Documentation/generate_documentation.sh
         ./Shared/Documentation/generate_documentation.sh
       shell: bash
+    - name: Archive PNG files
+      run: |
+        cd ./Shared/Documentation
+        zip -r generated-pngs.zip *.png
     - name: Upload PNG files
       uses: actions/upload-artifact@v2
       with:
         name: generated-pngs
-        path: ./Shared/Documentation/*.png
+        path: ./Shared/Documentation/generated-pngs.zip
     - name: Upload HTML file
       uses: actions/upload-artifact@v2
       with:
@@ -56,9 +60,9 @@ jobs:
       with:
         name: test-html
     - name: Move HTML file
-      run: mv test.html index.html
-    - name: Remove existing PNG files
-      run: rm -f *.png
+      run: |
+        mv test.html index.html
+        ls -la
     - name: Download PNG files
       uses: actions/download-artifact@v2
       with:
