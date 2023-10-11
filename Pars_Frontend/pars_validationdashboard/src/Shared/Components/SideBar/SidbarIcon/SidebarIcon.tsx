@@ -4,10 +4,10 @@ import { IconProps } from "@mui/material";
 import { NavLink } from 'react-router-dom'
 
 type SidebarIconProps = {
-    children: ReactNode;
-    icon: ReactElement<IconProps>;
-    link: string;
-    header: boolean;
+    readonly children: ReactNode;
+    readonly icon: ReactElement<IconProps>;
+    readonly link: string;
+    readonly header: boolean;
 };
 
 function SidebarIcon({header, link, children, icon}: SidebarIconProps): JSX.Element {

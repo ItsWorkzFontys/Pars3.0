@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import './content.scss';
 
 type ContentProps = {
-  children: ReactNode;
+    readonly children: ReactNode;
 }
 
 function Content({children}: ContentProps): JSX.Element {

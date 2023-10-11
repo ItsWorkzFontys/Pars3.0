@@ -4,10 +4,10 @@ import SidebarIcon from "../SidbarIcon/SidebarIcon";
 import { IconProps } from "@mui/material";
 
 type SidebarRowPros = {
-    rowText: string;
-    icon: ReactElement<IconProps>;
-    link: string;
-    header: boolean
+    readonly rowText: string;
+    readonly icon: ReactElement<IconProps>;
+    readonly link: string;
+    readonly header: boolean
 };
 
 function SidebarRow({header = false, link, rowText, icon}: SidebarRowPros): JSX.Element {
