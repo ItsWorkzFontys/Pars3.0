@@ -63,6 +63,10 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: generated-pngs
+    - name: Move PNG files to root and remove empty directories
+      run: |
+        mv generated-pngs/*.png ./
+        find generated-pngs -type d -empty -delete
     - name: Commit and push
       run: |
         git config user.name "GitHub Actions"
