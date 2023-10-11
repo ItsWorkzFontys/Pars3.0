@@ -60,13 +60,17 @@ jobs:
       with:
         name: test-html
     - name: Move HTML file
-      run: mv test.html index.html
+      run: |
+        mv test.html index.html
+        ls -la
     - name: Download PNG files
       uses: actions/download-artifact@v2
       with:
         name: generated-pngs
     - name: Extract PNG files
-      run: unzip generated-pngs/generated-pngs.zip
+      run: |
+        ls -la
+        unzip generated-pngs/generated-pngs.zip
     - name: Commit and push
       run: |
         git config user.name "GitHub Actions"
