@@ -57,6 +57,8 @@ jobs:
         name: test-html
     - name: Move HTML file
       run: mv test.html index.html
+    - name: Remove existing PNG files
+      run: rm -f path/to/your/directory/*.png
     - name: Download PNG files
       uses: actions/download-artifact@v2
       with:
