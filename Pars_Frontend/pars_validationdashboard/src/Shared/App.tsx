@@ -3,6 +3,8 @@ import Sidebar from './Components/SideBar/Sidebar'
 import Content from './Components/Content/Content';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './Styling/App.scss';
+import Example from './Components/Content/Pages/Example/Example';
+import Dashboard from './Components/Content/Pages/Dashboard/Dashboard';
 
 function App(): JSX.Element {
   return (
@@ -14,7 +16,8 @@ function App(): JSX.Element {
         <div className='right'>
           <Content>
             <Routes>
-              <Route path='/' />
+              <Route path='/' element={<Dashboard />} />
+              <Route path='/example' element={<Example />} />
             </Routes>
           </Content>
         </div>
