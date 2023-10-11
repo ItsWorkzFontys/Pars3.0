@@ -1,7 +1,7 @@
 import React, { ReactNode, ReactElement } from "react";
 import './sidebar-icon.scss';
 import { IconProps } from "@mui/material";
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 type SidebarIconProps = {
     children: ReactNode;
@@ -12,11 +12,18 @@ type SidebarIconProps = {
 
 function SidebarIcon({header, link, children, icon}: SidebarIconProps): JSX.Element {
     return(
-        <Link to={link} className={header? "sidebar-row-icon header-icon" : "sidebar-row-icon"}
+        <NavLink to={link} className={
+            ({isActive}) => {
+                let __class = "sidebar-row-icon"
+                __class += isActive && !header ? " active" : "";
+                __class += header ? " header-icon" : ""
+                return __class;
+                }
+             }
         >
             {icon}
             {children}
-        </Link>
+        </NavLink>
     );
 }
 
