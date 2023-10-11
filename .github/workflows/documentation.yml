@@ -33,7 +33,7 @@ jobs:
     - name: Archive PNG files
       run: |
         cd ./Shared/Documentation
-        zip generated-pngs.zip *.png
+        zip -r generated-pngs.zip *.png
     - name: Upload PNG files
       uses: actions/upload-artifact@v2
       with:
