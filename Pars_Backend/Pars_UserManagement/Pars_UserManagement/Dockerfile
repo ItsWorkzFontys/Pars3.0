@@ -5,14 +5,14 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Pars_UserManagement/Pars_UserManagement/Pars_UserManagement.csproj", "Pars_UserManagement/Pars_UserManagement/"]
-RUN dotnet restore "Pars_UserManagement/Pars_UserManagement/Pars_UserManagement.csproj"
+COPY ["Pars_UserManagement/Pars_UserManagement.csproj", "Pars_UserManagement/"]
+RUN dotnet restore "Pars_UserManagement/Pars_UserManagement.csproj"
 COPY . .
 WORKDIR "/src/Pars_UserManagement"
-RUN dotnet build "Pars_UserManagement/Pars_UserManagement.csproj" -c Release -o /app/build
+RUN dotnet build "Pars_UserManagement.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Pars_UserManagement/Pars_UserManagement.csproj" -c Release -o /app/publish
+RUN dotnet publish "Pars_UserManagement.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
