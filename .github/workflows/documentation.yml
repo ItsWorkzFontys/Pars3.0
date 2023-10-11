@@ -30,11 +30,16 @@ jobs:
         chmod +x ./Shared/Documentation/generate_documentation.sh
         ./Shared/Documentation/generate_documentation.sh
       shell: bash
+    - name: Upload PNG files
+      uses: actions/upload-artifact@v2
+      with:
+        name: generated-pngs
+        path: ./Shared/Documentation/*.png
     - name: Upload HTML file
       uses: actions/upload-artifact@v2
       with:
         name: test-html
-        path: ./Shared/Documentation/Text/test.html
+        path: ./Shared/Documentation/test.html
 
   update-gh-pages:
     needs: generate-docs
@@ -52,6 +57,10 @@ jobs:
         name: test-html
     - name: Move HTML file
       run: mv test.html index.html
+    - name: Download PNG files
+      uses: actions/download-artifact@v2
+      with:
+        name: generated-pngs
     - name: Commit and push
       run: |
         git config user.name "GitHub Actions"

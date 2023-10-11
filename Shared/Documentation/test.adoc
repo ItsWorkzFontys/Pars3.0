@@ -1,4 +1,6 @@
 = Test
 This is a test using AsciiDoc
 
-image::../Diagrams/test.png[]
+image::test.png[]
+
+image::test2.png[]

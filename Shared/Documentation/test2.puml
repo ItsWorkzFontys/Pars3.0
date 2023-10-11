@@ -8,7 +8,7 @@ System(systemAlias, "Label", "Optional Description")
 
 System_Ext(extSystemAlias, "Label", "Optional Description")
 
-Rel(personAlias, containerAlias, "Label", "C#")
+Rel(personAlias, containerAlias, "Label", "Java Sprintboot")
 
-Rel_U(systemAlias, extSystemAlias, "Label", "C#")
+Rel_U(systemAlias, extSystemAlias, "Label", "Java Sprintboot")
 @enduml
