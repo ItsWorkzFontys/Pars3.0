@@ -1,25 +1,14 @@
-import React from 'react';
+import React, { ReactNode } from "react";
 import './content.scss';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
 
-const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <div>Hello world!</div>,
-    },
-    {
-        path: "/wifi",
-        element: <div>Hello wifi!</div>,
-      },
-  ]);
+type ContentProps = {
+  children: ReactNode;
+}
 
-function Content(): JSX.Element {
+function Content({children}: ContentProps): JSX.Element {
     return(
         <div className='content'>
-            <RouterProvider router={router} />
+            {children}
         </div>
     );
 }
