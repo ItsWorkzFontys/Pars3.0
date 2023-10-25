@@ -1,8 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import * as ReactDOM from "react-dom/client";
 import './Shared/Styling/index.scss';
-import App from './Shared/App';
-import reportWebVitals from './reportWebVitals';
+import App from 'src/Shared/App';
+import reportWebVitals from 'src/reportWebVitals'; 
 
 
 const root = ReactDOM.createRoot(
