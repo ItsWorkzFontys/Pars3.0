@@ -1,6 +1,6 @@
 import React from "react";
 import './sidebar-content.scss'
-import SidebarRow from "../SidebarRow/SidebarRow";
+import SidebarRow from "src/Shared/Components/SideBar/SidebarRow/SidebarRow";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 

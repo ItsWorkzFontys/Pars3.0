@@ -1,10 +1,10 @@
 import React from 'react';
-import Sidebar from './Components/SideBar/Sidebar'
-import Content from './Components/Content/Content';
+import Sidebar from 'src/Shared/Components/SideBar/Sidebar';
+import Content from 'src/Shared/Components/Content/Content';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './Styling/App.scss';
-import Example from './Components/Content/Pages/Example/Example';
-import Dashboard from './Components/Content/Pages/Dashboard/Dashboard';
+import Example from 'src/Shared/Components/Content/Pages/Example/Example';
+import Dashboard from 'src/Shared/Components/Content/Pages/Dashboard/Dashboard';
 
 function App(): JSX.Element {
   return (
