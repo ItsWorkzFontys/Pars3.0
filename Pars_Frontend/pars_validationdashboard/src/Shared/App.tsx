@@ -1,8 +1,8 @@
 import React from 'react';
-import Sidebar from 'src/Shared/Components/SideBar/Sidebar';
+import Sidebar from 'src/Shared/Components/SideBar/SideBar';
 import Content from 'src/Shared/Components/Content/Content';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './Styling/App.scss';
+import 'src/Shared/Styling/App.scss';
 import Example from 'src/Shared/Components/Content/Pages/Example/Example';
 import Dashboard from 'src/Shared/Components/Content/Pages/Dashboard/Dashboard';
 

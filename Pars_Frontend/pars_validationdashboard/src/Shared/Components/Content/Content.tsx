@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import './content.scss';
+import 'src/Shared/Components/Content/content.scss';
 
 type ContentProps = {
     readonly children: ReactNode;

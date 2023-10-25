@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react";
-import './sidebar-row.scss'
-import SidebarIcon from "src/Shared/Components/SideBar/SidbarIcon/SidebarIcon";
+import "src/Shared/Components/SideBar/SidebarRow/sidebar-row.scss"
+import SidebarIcon from "src/Shared/Components/SideBar/SidebarIcon/SidebarIcon";
 import { IconProps } from "@mui/material";
 
 type SidebarRowPros = {

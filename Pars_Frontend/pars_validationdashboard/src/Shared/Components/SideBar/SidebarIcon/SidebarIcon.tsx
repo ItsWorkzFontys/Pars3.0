@@ -1,5 +1,5 @@
 import React, { ReactNode, ReactElement } from "react";
-import './sidebar-icon.scss';
+import "src/Shared/Components/SideBar/SidebarIcon/sidebar-icon.scss";
 import { IconProps } from "@mui/material";
 import { NavLink } from 'react-router-dom'
 

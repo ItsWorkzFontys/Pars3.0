@@ -1,5 +1,5 @@
 import React from "react";
-import './sidebar.scss'
+import "src/Shared/Components/SideBar/sideBar.scss"
 import SidebarHeader from "src/Shared/Components/SideBar/SidebarHeader/SidebarHeader";
 import SidebarContent from "src/Shared/Components/SideBar/SidebarContent/SidebarContent";
 

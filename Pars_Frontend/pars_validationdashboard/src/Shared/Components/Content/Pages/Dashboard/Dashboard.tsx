@@ -1,5 +1,5 @@
 import React from "react";
-import './dashboard.scss';
+import 'src/Shared/Components/Content/Pages/Dashboard/dashboard.scss';
 
 function Dashboard(): JSX.Element {
     return(

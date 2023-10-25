@@ -1,5 +1,5 @@
 import React from "react";
-import './sidebar-content.scss'
+import "src/Shared/Components/SideBar/SidebarContent/sidebar-content.scss"
 import SidebarRow from "src/Shared/Components/SideBar/SidebarRow/SidebarRow";
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';

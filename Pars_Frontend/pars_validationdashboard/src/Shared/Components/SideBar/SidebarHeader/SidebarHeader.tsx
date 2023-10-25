@@ -1,5 +1,5 @@
 import React from "react";
-import './sidebar-header.scss'
+import "src/Shared/Components/SideBar/SidebarHeader/sidebar-header.scss"
 import SidebarRow from "src/Shared/Components/SideBar/SidebarRow/SidebarRow";
 import HistoryEduRoundedIcon from '@mui/icons-material/HistoryEduRounded';
 
