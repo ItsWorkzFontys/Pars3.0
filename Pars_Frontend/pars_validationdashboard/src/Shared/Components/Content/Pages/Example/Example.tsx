@@ -5,7 +5,8 @@ import 'src/Shared/Components/Content/Pages/Example/example.scss';
 function Example(): JSX.Element {
     return(
         <div className='example'>
-            this an example
+            <h1>Example</h1>
+            <img src="first.png" alt="example"/>
         </div>
     );
 }
