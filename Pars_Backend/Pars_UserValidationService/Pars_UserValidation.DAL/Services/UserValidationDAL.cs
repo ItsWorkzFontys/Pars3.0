@@ -1,6 +1,7 @@
 ﻿using Pars_UserValidation.DAL.Context;
 using Pars_UserValidation.DAL.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
 
 namespace Pars_UserValidation.DAL.Services
 {
@@ -28,14 +29,16 @@ namespace Pars_UserValidation.DAL.Services
 
         public async Task<ICollection<UserValidationModel>> GetUserValidations() => db.UserValidation_Db.ToList();
 
-        public Task<UserValidationModel> GetValidationById(Guid id)
+        public async Task<UserValidationModel> GetValidationById(Guid id)
         {
-            throw new NotImplementedException();
+            return await db.UserValidation_Db.AsNoTracking().FirstOrDefaultAsync(u => u.UserValidationId == id);
         }
 
         public Task UpdateUserValidation(UserValidationModel uservalidation)
         {
-            throw new NotImplementedException();
+            db.UserValidation_Db.Update(uservalidation);
+            db.SaveChanges();
+            return Task.CompletedTask;
         }
     }
 }

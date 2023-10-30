@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Pars_UserValidationService.Controllers
+namespace Pars_UserValidation.Controllers
 {
     public class UserValidationController : Controller
     {
