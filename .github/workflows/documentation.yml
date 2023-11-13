@@ -64,6 +64,17 @@ jobs:
       with:
         name: generated-pngs
         path: ./pngs
+    - name: Move PNGs
+      run: |
+        png_folders=$(find . -type d -name "*.png")
+        for folder in $png_folders; do
+            if [ "$folder" != "./pngs" ]; then
+                mv "$folder"/* .
+                rmdir "$folder"
+            fi
+        done
+        rmdir "pngs"
+        echo "Process completed!"
     - name: Commit and push
       run: |
         git config user.name "GitHub Actions"

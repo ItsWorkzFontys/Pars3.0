@@ -1,4 +1,4 @@
-@startuml test
+@startuml test2
 title C2 Diagram Example
 !include <C4/C4_Container>
 
