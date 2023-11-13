@@ -1,5 +1,5 @@
 @startuml test2
-title C2 Diagram Example
+title C2 Diagram Example 2
 !include <C4/C4_Container>
 
 Person(personAlias, "Label", "Optional Description")
