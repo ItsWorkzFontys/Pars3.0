@@ -1,6 +1,6 @@
 = Test
-This is a test using AsciiDoc
+This is a test using AsciiDoctor to generate a HTML file with documentation.
 
 image::test.png[]
 
-image::test2.png[]
+image::test3.png[]
