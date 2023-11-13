@@ -63,15 +63,12 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: generated-pngs
+        path: ./pngs
     - name: Move PNG files to root
       run: |
         ls -la
-        for dir in ./*; do
-          if [ -d "$dir" ] && [ -n "$(ls -A $dir)" ]; then
-            mv "$dir"/* ./
-            rmdir "$dir"
-          fi
-        done
+        mv ./pngs/* ./
+        rmdir ./pngs
         ls -la
     - name: Commit and push
       run: |
