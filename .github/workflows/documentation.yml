@@ -67,8 +67,8 @@ jobs:
     - name: Move PNG files to root
       run: |
         ls -la
-        mv ./pngs/* ./
-        rmdir ./pngs
+        find . -name "*.png" -exec mv {} . \;
+        find . -type d -empty -delete
         ls -la
     - name: Commit and push
       run: |
