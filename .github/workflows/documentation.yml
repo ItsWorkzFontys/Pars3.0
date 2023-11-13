@@ -66,7 +66,7 @@ jobs:
         path: ./pngs
     - name: Move PNG files to root
       run: |
-        find pngs -mindepth 2 -type f -name "*.png" -exec mv {} pngs/ \;
+        find pngs -mindepth 2 -type f -name "*.png" -exec mv -T {} pngs/ \;
         find pngs -mindepth 1 -type d -exec rmdir {} \; 2>/dev/null
         mv pngs/* .
         rmdir pngs
