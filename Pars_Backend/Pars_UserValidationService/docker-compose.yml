@@ -1,0 +1,9 @@
+version: "31"
+services:
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    container_name: uservalidationdb
+    hostname: uservalidationdb
+    environment:
+        SA_PASSWORD: "Welkom12345"
+        ACCEPT_EULA: "Y"    

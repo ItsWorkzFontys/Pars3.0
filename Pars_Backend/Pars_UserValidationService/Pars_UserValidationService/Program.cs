@@ -5,7 +5,7 @@ using Pars_UserValidation.DAL.Models;
 using Pars_UserValidation.DAL.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("AppDb");
+var connectionString = builder.Configuration.GetConnectionString("validationDb");
 // Add services to the container.
 
 builder.Services.AddControllers();

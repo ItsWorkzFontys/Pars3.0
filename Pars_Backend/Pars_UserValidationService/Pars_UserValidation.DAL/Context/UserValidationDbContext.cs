@@ -16,7 +16,7 @@ namespace Pars_UserValidation.DAL.Context
 
         }
 
-        public DbSet<UserValidationModel> UserValidation_Db { get; set; }
+        public DbSet<UserValidationModel> validationDb { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -25,7 +25,7 @@ namespace Pars_UserValidation.DAL.Context
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            var connectionString = configuration.GetConnectionString("AppDb");
+            var connectionString = configuration.GetConnectionString("validationDb");
 
             optionsBuilder.UseSqlServer(connectionString);
         }

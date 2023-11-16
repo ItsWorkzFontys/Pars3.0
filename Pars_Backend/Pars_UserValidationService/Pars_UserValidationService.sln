@@ -8,12 +8,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pars_UserValidation.API", "
 		{138675BF-848F-4B5D-98E7-2BDF9101C8E0} = {138675BF-848F-4B5D-98E7-2BDF9101C8E0}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pars_UserValidation.Core.API", "Pars_UserValidation.Core.API\Pars_UserValidation.Core.API.csproj", "{138675BF-848F-4B5D-98E7-2BDF9101C8E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pars_UserValidation.Core.API", "Pars_UserValidation.Core.API\Pars_UserValidation.Core.API.csproj", "{138675BF-848F-4B5D-98E7-2BDF9101C8E0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{69C0ABA7-3C48-435D-AFEA-067D021C99E1} = {69C0ABA7-3C48-435D-AFEA-067D021C99E1}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pars_UserValidation.DAL", "Pars_UserValidation.DAL\Pars_UserValidation.DAL.csproj", "{69C0ABA7-3C48-435D-AFEA-067D021C99E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pars_UserValidation.DAL", "Pars_UserValidation.DAL\Pars_UserValidation.DAL.csproj", "{69C0ABA7-3C48-435D-AFEA-067D021C99E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -12,7 +12,7 @@ using Pars_UserValidation.DAL.Context;
 namespace Pars_UserValidation.DAL.Migrations
 {
     [DbContext(typeof(UserValidationDbContext))]
-    [Migration("20231113090747_InitialCreate")]
+    [Migration("20231116093624_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
