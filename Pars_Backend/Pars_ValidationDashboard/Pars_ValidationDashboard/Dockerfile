@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["Pars_ValidationDashboard/Pars_ValidationDashboard.csproj", "Pars_ValidationDashboard/"]
 RUN dotnet restore "Pars_ValidationDashboard/Pars_ValidationDashboard.csproj"
-COPY . .
+COPY ["Pars_ValidationDashboard/Pars_ValidationDashboard.csproj", "Pars_ValidationDashboard/"]
 WORKDIR "/src/Pars_ValidationDashboard"
 RUN dotnet build "Pars_ValidationDashboard.csproj" -c Release -o /app/build
 
