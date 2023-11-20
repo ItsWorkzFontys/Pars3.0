@@ -31,7 +31,7 @@
 
   ],
   "GlobalConfiguration": {
-    //"RequestIdKey": "OcRequestId",
+    "RequestIdKey": "OcRequestId",
     "BaseUrl": "http://localhost:8080"
   }
 }
