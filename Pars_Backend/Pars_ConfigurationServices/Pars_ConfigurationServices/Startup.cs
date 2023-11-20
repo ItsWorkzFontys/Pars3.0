@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.EntityFrameworkCore;
 using Pars_ConfigurationServices.Data;
+using Pars_ConfigurationServices.Services;
 
 namespace Pars_ConfigurationServices
 {
@@ -19,24 +14,19 @@ namespace Pars_ConfigurationServices
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ConfigurationService>();
 
-            services.AddMvc();
-            services.AddMvc(option => option.EnableEndpointRouting = false);
-            services.AddMemoryCache();
+            services.AddEndpointsApiExplorer();
+            services.AddHttpClient();
+            services.AddControllers();
             services.AddSession();
-            services.AddDbContext<SchoolSettingsDbContext>(options =>
-            options.UseMySql(Configuration.GetConnectionString("SchoolSettingsDbConnection"), new MySqlServerVersion(new Version())));
+            services.AddDistributedMemoryCache();
+            services.AddHttpContextAccessor();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-                {
-                    Title = "Configuration Service API",
-                    Version = "v1",
-                    Description = "APIs to manage school configuration settings."
-                });
-            });
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseMySql(Configuration.GetConnectionString("ConfigurationSettings"), new MySqlServerVersion(new Version(8, 1, 0))));
+
+            services.AddSwaggerGen();
         }
 
         public void Configure(IApplicationBuilder app)
@@ -44,14 +34,19 @@ namespace Pars_ConfigurationServices
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            // app.UseMvcWithDefaultRoute();
             app.UseSession();
+            app.UseRouting();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Configuration Service API V1");
                 c.RoutePrefix = string.Empty; // This can be any route you prefer
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
             });
 
             app.Use(async (context, next) =>
@@ -65,8 +60,6 @@ namespace Pars_ConfigurationServices
                 await next();
             });
         }
-
-
     }
 }
 
