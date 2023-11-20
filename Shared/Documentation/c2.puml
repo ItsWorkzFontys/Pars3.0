@@ -1,0 +1,62 @@
+@startuml c2
+
+!include <C4/C4_Container>
+!include <cloudinsight/mysql>
+
+title PARS3.0 Container Diagram
+
+LAYOUT_WITH_LEGEND()
+
+'people
+Person(Admin, "Administrator", "")
+Person(Teacher, "Teacher", "")
+
+System_Boundary(boundary, "PARS3.0"){
+    'frontend
+    Container(WebApp, "Web app", "React Frontend", "Frontend for PARS3.0")
+
+    'gateway
+    Container(Gateway, "API gateway", "C Sharp", "Gateway for PARS3.0")
+    
+    'services
+    Container(UserManagement, "User management service", "C Sharp", "Service for management of student data")
+    Container(UserValidation, "User validation service", "C Sharp", "Service for validation of student appearance")
+    Container(ScheduleManagement, "Schedule management service", "C Sharp", "Service for management of schedule data")
+    Container(Configuration, "Configuration service", "C Sharp", "Service for managing configurations")
+    
+    'databases
+    ContainerDb(DBUserManagement, "User management database", "MSSQL", "Stores student data")
+    ContainerDb(DBUserValidation, "User validation database", "MSSQL", "Stores student appearance data")
+    ContainerDb(DBScheduleManagement, "Schedule management database", "MSSQL", "Stores schedule data")
+    ContainerDb(DBConfiguration, "Configuration database", "MSSQL", "Stores configuration and settings data")
+}
+
+'external systems
+System_Ext(Xedule, "Xedule", "Schedule data provider", "")
+System_Ext(ODS2, "ODS2", "Student data provider", "")
+System_Ext(MicrosoftAuth, "Microsoft Authentication", "", "")
+
+'links users
+Rel(Admin, WebApp, "Uses", "HTTPS")
+Rel(Teacher, WebApp, "Uses", "HTTPS")
+
+'links frontend
+Rel(WebApp, Gateway, "Uses", "HTTPS")
+
+'links gateway
+Rel(Gateway, UserManagement, "Uses", "HTTPS")
+Rel(Gateway, UserValidation, "Uses", "HTTPS")
+Rel(Gateway, ScheduleManagement, "Uses", "HTTPS")
+Rel(Gateway, Configuration, "Uses", "HTTPS")
+
+'links services
+Rel(UserManagement, DBUserManagement, "Reads from and writes to", "")
+Rel(UserValidation, DBUserValidation, "Reads from and writes to", "")
+Rel(ScheduleManagement, DBScheduleManagement, "Reads from and writes to", "")
+Rel(Configuration, DBConfiguration, "Reads from and writes to", "")
+
+'links to externals
+Rel(Gateway, MicrosoftAuth, "Uses", "HTTPS")
+Rel(ScheduleManagement, Xedule, "Uses", "")
+Rel(UserManagement, ODS2, "Uses", "")
+@enduml
