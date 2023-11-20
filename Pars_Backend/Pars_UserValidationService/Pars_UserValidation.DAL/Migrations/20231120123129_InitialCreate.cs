@@ -12,14 +12,14 @@ namespace Pars_UserValidation.DAL.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "UserValidation_Db",
+                name: "validationDb",
                 columns: table => new
                 {
                     UserValidationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserValidation_Db", x => x.UserValidationId);
+                    table.PrimaryKey("PK_validationDb", x => x.UserValidationId);
                 });
         }
 
@@ -27,7 +27,7 @@ namespace Pars_UserValidation.DAL.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "UserValidation_Db");
+                name: "validationDb");
         }
     }
 }

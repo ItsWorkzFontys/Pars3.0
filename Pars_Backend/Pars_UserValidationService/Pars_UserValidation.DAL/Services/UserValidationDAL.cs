@@ -16,27 +16,27 @@ namespace Pars_UserValidation.DAL.Services
 
         public async Task AddUserValidation(UserValidationModel uservalidation)
         {
-            await db.validationDb.AddAsync(uservalidation);
+            await db.ValidationDb.AddAsync(uservalidation);
             db.SaveChanges();
         }
 
         public Task DeleteUserValidationById(Guid id)
         {
-            db.validationDb.Remove(db.validationDb.Where(x => x.UserValidationId == id).FirstOrDefault());
+            db.ValidationDb.Remove(db.ValidationDb.Where(x => x.UserValidationId == id).FirstOrDefault());
             db.SaveChanges();
             return Task.CompletedTask;
         }
 
-        public async Task<ICollection<UserValidationModel>> GetUserValidations() => db.validationDb.ToList();
+        public async Task<ICollection<UserValidationModel>> GetUserValidations() => db.ValidationDb.ToList();
 
         public async Task<UserValidationModel> GetValidationById(Guid id)
         {
-            return await db.validationDb.AsNoTracking().FirstOrDefaultAsync(u => u.UserValidationId == id);
+            return await db.ValidationDb.AsNoTracking().FirstOrDefaultAsync(u => u.UserValidationId == id);
         }
 
         public Task UpdateUserValidation(UserValidationModel uservalidation)
         {
-            db.validationDb.Update(uservalidation);
+            db.ValidationDb.Update(uservalidation);
             db.SaveChanges();
             return Task.CompletedTask;
         }

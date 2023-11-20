@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<UserValidationDbContext>(x => x.UseSqlServer());
+builder.Services.AddDbContext<UserValidationDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddTransient<IUserValidationDAL, UserValidationDAL>();
 builder.Services.AddTransient<IUserValidationService, UserValidationCore>();
 

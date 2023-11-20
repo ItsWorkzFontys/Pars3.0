@@ -17,7 +17,7 @@ namespace Pars_UserValidation.DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.13")
+                .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -30,7 +30,7 @@ namespace Pars_UserValidation.DAL.Migrations
 
                     b.HasKey("UserValidationId");
 
-                    b.ToTable("UserValidation_Db");
+                    b.ToTable("validationDb");
                 });
 #pragma warning restore 612, 618
         }
