@@ -2,27 +2,28 @@
 
 namespace Pars_UserManagement.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("user/")]
     [ApiController]
     public class UserController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        // public IActionResult Index()
+        // {
+        //     return View();
+        // }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(long id)
+        [HttpGet]
+        [Route("{id:int}")]
+        public ActionResult<string> Get(int id)
         {
-            string number = id * 5;
-            return Ok(number);
+            string number = (id * 5).ToString();
+            return number;
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<string> Get()
         {
             string test = "hello world! :D";
-            return Ok(test);
+            return test;
         }
     }
 }

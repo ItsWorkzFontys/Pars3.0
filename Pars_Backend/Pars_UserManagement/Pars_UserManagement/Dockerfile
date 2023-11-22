@@ -7,7 +7,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["Pars_UserManagement/Pars_UserManagement.csproj", "Pars_UserManagement/"]
 RUN dotnet restore "Pars_UserManagement/Pars_UserManagement.csproj"
-COPY ["Pars_UserManagement/Pars_UserManagement.csproj", "Pars_UserManagement/"]
+COPY . .
 WORKDIR "/src/Pars_UserManagement"
 RUN dotnet build "Pars_UserManagement.csproj" -c Release -o /app/build
 

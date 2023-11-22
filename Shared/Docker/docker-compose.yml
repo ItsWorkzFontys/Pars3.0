@@ -76,16 +76,16 @@ services:
   #     - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
   #   networks:
   #     - pars-cloud-network
-  gateway:
-    container_name: gateway
-    image: gateway:latest
-    build:
-      context: ../../Pars_Backend/Gateway
-      dockerfile: ../../Pars_Backend/Gateway/Gateway/Dockerfile
-    ports:
-      - 8080:8080
-    networks:
-      - pars-cloud-network
+  # gateway:
+  #   container_name: gateway
+  #   image: gateway:latest
+  #   build:
+  #     context: ../../Pars_Backend/Gateway
+  #     dockerfile: ../../Pars_Backend/Gateway/Gateway/Dockerfile
+  #   ports:
+  #     - 8080:8080
+  #   networks:
+  #     - pars-cloud-network
   pars-usermanagement:
     container_name: pars-usermanagement
     image: parsusermanagement:latest
@@ -96,16 +96,16 @@ services:
       - 8081:8081
     networks:
       - pars-cloud-network
-  pars-validationdashboard:
-    container_name: pars-validationdashboard
-    image: parsvalidationdashboard:latest
-    build:
-      context: ../../Pars_Backend/Pars_ValidationDashboard
-      dockerfile: ../../Pars_Backend/Pars_ValidationDashboard/Pars_ValidationDashboard/Dockerfile
-    ports:
-      - 8082:8082
-    networks:
-      - pars-cloud-network
+  # pars-validationdashboard:
+  #   container_name: pars-validationdashboard
+  #   image: parsvalidationdashboard:latest
+  #   build:
+  #     context: ../../Pars_Backend/Pars_ValidationDashboard
+  #     dockerfile: ../../Pars_Backend/Pars_ValidationDashboard/Pars_ValidationDashboard/Dockerfile
+  #   ports:
+  #     - 8082:8082
+  #   networks:
+  #     - pars-cloud-network
 volumes:
   mysql-db:
     driver: local
