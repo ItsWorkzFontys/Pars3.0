@@ -60,6 +60,17 @@ services:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - pars-cloud-network
+  uservalidation-mssql-db:
+    container_name: "uservalidationdb"
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      SA_PASSWORD: "Welkom12345"
+      ACCEPT_EULA: "Y"
+    ports:
+      - '1433:1433'
   pars-mysql-db:
     container_name: "pars-mysql-db"
     image: mysql:8.0
