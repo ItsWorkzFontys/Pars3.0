@@ -76,6 +76,20 @@ services:
   #     - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
   #   networks:
   #     - pars-cloud-network
+  gateway-mysql-db:
+    container_name: "gateway-mysql-db"
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_DATABASE=gateway
+      - MYSQL_ROOT_PASSWORD=gateway
+    ports:
+      - '3310:3310'
+    volumes:
+      - mysql-db:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
   # gateway:
   #   container_name: gateway
   #   image: gateway:latest
