@@ -68,13 +68,19 @@ jobs:
         path: ./pngs
     - name: Move PNGs
       run: |
+        ls -la
         png_folders=$(find . -type d -name "*.png")
         for folder in $png_folders; do
-            if [ "$folder" != "./pngs" ]; then
+            if [[ "$folder" != "./pngs" && "$folder" != "./pngs/"* ]]; then
                 mv "$folder"/* .
                 rmdir "$folder"
             fi
         done
+        png_files=$(find ./pngs -type f -name "*.png")
+        for file in $png_files; do
+            mv "$file" .
+        done
+        ls -la
         rmdir "pngs"
         echo "Process completed!"
     - name: Commit and push
