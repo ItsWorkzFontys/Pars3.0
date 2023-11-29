@@ -15,10 +15,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18.17.1'
-    - name: Install puml package globally
+    - name: Install ascii doctor package globally
       run: npm install -g asciidoctor
-    - name: Install asciidoctor package globally
-      run: npm install -g puml
     - name: Install Java & Graphviz Dot
       run: |
         sudo apt-get update
