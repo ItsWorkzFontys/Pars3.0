@@ -7,8 +7,14 @@ for file in *.puml; do
     filename=$(basename -- "$file")
     filename="${filename%.*}"
     echo -e "Found $filename.puml"
-    puml generate $file -o "$filename.png"
-    echo -e "Created $filename.png"
+    java -jar plantuml.jar "$filename.puml"
+    
+    # Check if the .png file was created successfully
+    if [ -f "$filename.png" ]; then
+        echo -e "Created $filename.png"
+    else
+        echo -e "Failed to create $filename.png"
+    fi
 done
 
 #Get the .adoc files and export them to .html with the same basename
@@ -17,5 +23,12 @@ for file2 in *.adoc; do
     filename2="${filename2%.*}"
     echo -e "Found $filename2.adoc"
     asciidoctor "$filename2.adoc"
-    echo -e "Created $filename2.html"
+    
+    # Check if the .html file was created successfully
+    if [ -f "$filename2.html" ]; then
+        echo -e "Created $filename2.html"
+    else
+        echo -e "Failed to create $filename2.html"
+    fi
 done
+
