@@ -1,6 +1,7 @@
 ﻿namespace Gateway.Services
 {
-    public class IGatewayService
+    public interface IGatewayService
     {
+        void Post();
     }
 }

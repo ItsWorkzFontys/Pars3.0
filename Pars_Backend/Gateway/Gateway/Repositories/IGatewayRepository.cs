@@ -1,6 +1,7 @@
 ﻿namespace Gateway.Repositories
 {
-    public class IGatewayRepository
+    public interface IGatewayRepository
     {
+        void Post();
     }
 }

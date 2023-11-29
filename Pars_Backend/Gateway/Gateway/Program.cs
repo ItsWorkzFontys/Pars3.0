@@ -14,6 +14,10 @@ builder.Services.AddSwaggerGen();
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 builder.Services.AddOcelot(builder.Configuration);
 
+// Logging
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

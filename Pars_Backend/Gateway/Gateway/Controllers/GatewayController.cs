@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Gateway.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Gateway.Controllers
 {
@@ -6,19 +8,21 @@ namespace Gateway.Controllers
     [Route("api/[controller]")]
     public class GatewayController
     {
-        //// GET api/values
-        //[HttpGet]
-        //public ActionResult<IEnumerable<string>> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+        private readonly IGatewayService service;
+        private readonly ILogger logger;
 
-        //// GET api/values/5
-        //[HttpGet("{id}")]
-        //public ActionResult<string> Get(int id)
-        //{
-        //    return "value";
-        //}
+        public GatewayController(IGatewayService service, ILogger logger)
+        {
+            this.service = service;
+            this.logger = logger;
+        }
+
+        [HttpPost]
+        public ActionResult<string> Post()
+        {
+            string log = logger.LogInformation;
+            return log;
+        }
 
         [HttpGet("hello")]
         public ActionResult<string> Get()
@@ -29,18 +33,6 @@ namespace Gateway.Controllers
         //// POST api/values
         //[HttpPost]
         //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT api/values/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/values/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
         //{
         //}
     }
