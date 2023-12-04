@@ -20,7 +20,7 @@ namespace Gateway.Controllers
         [HttpPost]
         public ActionResult<string> Post()
         {
-            string log = logger.LogInformation;
+            string log = "log";
             return log;
         }
 

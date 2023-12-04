@@ -1,8 +1,18 @@
-﻿namespace Gateway.Repositories
+﻿using Gateway.Context;
+using Gateway.Services;
+
+namespace Gateway.Repositories
 {
     public class GatewayRepository : IGatewayRepository
     {
-        public void post()
+        private readonly GatewayDbContext context;
+
+        public GatewayRepository(GatewayDbContext context)
+        {
+            this.context = context;
+        }
+
+        public void Post()
         {
 
         }
