@@ -14,7 +14,12 @@ namespace Gateway.Repositories
 
         public void Post()
         {
-
+            GatewayDto gatewayDto = new GatewayDto();
+            gatewayDto.setTimestamp(DateTime.Now);
+            gatewayDto.setRole("teacher");
+            gatewayDto.setPage("");
+            context.GatewayDb.Add();
+            db.SaveChanges();
         }
     }
 }

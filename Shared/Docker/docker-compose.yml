@@ -90,26 +90,26 @@ services:
     volumes:
       - mysql-db:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-  # gateway:
-  #   container_name: gateway
-  #   image: gateway:latest
-  #   build:
-  #     context: ../../Pars_Backend/Gateway
-  #     dockerfile: ../../Pars_Backend/Gateway/Gateway/Dockerfile
-  #   ports:
-  #     - 8080:8080
-  #   networks:
-  #     - pars-cloud-network
-  pars-usermanagement:
-    container_name: pars-usermanagement
-    image: parsusermanagement:latest
+  gateway:
+    container_name: gateway
+    image: gateway:latest
     build:
-      context: ../../Pars_Backend/Pars_UserManagement
-      dockerfile: ../../Pars_Backend/Pars_UserManagement/Pars_UserManagement/Dockerfile
+      context: ../../Pars_Backend/Gateway
+      dockerfile: ../../Pars_Backend/Gateway/Gateway/Dockerfile
     ports:
-      - 8081:8081
+      - 8080:8080
     networks:
       - pars-cloud-network
+  # pars-usermanagement:
+  #   container_name: pars-usermanagement
+  #   image: parsusermanagement:latest
+  #   build:
+  #     context: ../../Pars_Backend/Pars_UserManagement
+  #     dockerfile: ../../Pars_Backend/Pars_UserManagement/Pars_UserManagement/Dockerfile
+  #   ports:
+  #     - 8081:8081
+  #   networks:
+  #     - pars-cloud-network
   # pars-validationdashboard:
   #   container_name: pars-validationdashboard
   #   image: parsvalidationdashboard:latest
