@@ -12,15 +12,15 @@ using Pars_UserValidation.DAL.Context;
 namespace Pars_UserValidation.DAL.Migrations
 {
     [DbContext(typeof(UserValidationDbContext))]
-    [Migration("20231211130059_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20231213102704_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.13")
+                .HasAnnotation("ProductVersion", "7.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -36,7 +36,7 @@ namespace Pars_UserValidation.DAL.Migrations
 
                     b.HasKey("ClassRoomId");
 
-                    b.ToTable("ClassRoom");
+                    b.ToTable("Classroom");
                 });
 
             modelBuilder.Entity("Pars_UserValidation.DAL.Models.Lesson", b =>
@@ -105,30 +105,30 @@ namespace Pars_UserValidation.DAL.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("LessonId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("StudentId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("StudentPresence")
                         .HasColumnType("int");
 
                     b.Property<Guid>("TUId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TeacherId")
+                    b.Property<Guid>("UserValidation_Lesson_FK")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserValidation_Student_FK")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserValidation_Teacher_FK")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("UserValidationId");
 
-                    b.HasIndex("LessonId");
+                    b.HasIndex("UserValidation_Lesson_FK");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("UserValidation_Student_FK");
 
-                    b.HasIndex("TeacherId");
+                    b.HasIndex("UserValidation_Teacher_FK");
 
-                    b.ToTable("ValidationDb");
+                    b.ToTable("UserValidation");
                 });
 
             modelBuilder.Entity("Pars_UserValidation.DAL.Models.Lesson", b =>
@@ -157,19 +157,19 @@ namespace Pars_UserValidation.DAL.Migrations
                 {
                     b.HasOne("Pars_UserValidation.DAL.Models.Lesson", "Lesson")
                         .WithMany()
-                        .HasForeignKey("LessonId")
+                        .HasForeignKey("UserValidation_Lesson_FK")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Pars_UserValidation.DAL.Models.Student", "Student")
                         .WithMany()
-                        .HasForeignKey("StudentId")
+                        .HasForeignKey("UserValidation_Student_FK")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Pars_UserValidation.DAL.Models.Teacher", "Teacher")
                         .WithMany()
-                        .HasForeignKey("TeacherId")
+                        .HasForeignKey("UserValidation_Teacher_FK")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

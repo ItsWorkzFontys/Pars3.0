@@ -14,29 +14,30 @@ namespace Pars_UserValidation.DAL.Services
             this.db = db;
         }
 
-        public async Task AddUserValidation(UserValidationModel uservalidation)
+        public async Task<UserValidationModel> AddUserValidation(UserValidationModel uservalidation)
         {
-            await db.ValidationDb.AddAsync(uservalidation);
-            db.SaveChanges();
+            db.UserValidation.Add(uservalidation);
+            await db.SaveChangesAsync();
+            return uservalidation;
         }
 
         public Task DeleteUserValidationById(Guid id)
         {
-            db.ValidationDb.Remove(db.ValidationDb.Where(x => x.UserValidationId == id).FirstOrDefault());
+            db.UserValidation.Remove(db.UserValidation.Where(x => x.UserValidationId == id).FirstOrDefault());
             db.SaveChanges();
             return Task.CompletedTask;
         }
 
-        public async Task<ICollection<UserValidationModel>> GetUserValidations() => db.ValidationDb.ToList();
+        public async Task<ICollection<UserValidationModel>> GetUserValidations() => db.UserValidation.ToList();
 
         public async Task<UserValidationModel> GetValidationById(Guid id)
         {
-            return await db.ValidationDb.AsNoTracking().FirstOrDefaultAsync(u => u.UserValidationId == id);
+            return await db.UserValidation.AsNoTracking().FirstOrDefaultAsync(u => u.UserValidationId == id);
         }
 
         public Task UpdateUserValidation(UserValidationModel uservalidation)
         {
-            db.ValidationDb.Update(uservalidation);
+            db.UserValidation.Update(uservalidation);
             db.SaveChanges();
             return Task.CompletedTask;
         }

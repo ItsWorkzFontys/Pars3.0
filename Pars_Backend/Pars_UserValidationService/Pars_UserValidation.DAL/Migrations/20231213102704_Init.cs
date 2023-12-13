@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Pars_UserValidation.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "ClassRoom",
+                name: "Classroom",
                 columns: table => new
                 {
                     ClassRoomId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
@@ -20,7 +20,7 @@ namespace Pars_UserValidation.DAL.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ClassRoom", x => x.ClassRoomId);
+                    table.PrimaryKey("PK_Classroom", x => x.ClassRoomId);
                 });
 
             migrationBuilder.CreateTable(
@@ -49,9 +49,9 @@ namespace Pars_UserValidation.DAL.Migrations
                 {
                     table.PrimaryKey("PK_Lesson", x => x.LessonId);
                     table.ForeignKey(
-                        name: "FK_Lesson_ClassRoom_ClassRoomId",
+                        name: "FK_Lesson_Classroom_ClassRoomId",
                         column: x => x.ClassRoomId,
-                        principalTable: "ClassRoom",
+                        principalTable: "Classroom",
                         principalColumn: "ClassRoomId");
                     table.ForeignKey(
                         name: "FK_Lesson_Teacher_TeacherId",
@@ -79,34 +79,34 @@ namespace Pars_UserValidation.DAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ValidationDb",
+                name: "UserValidation",
                 columns: table => new
                 {
                     UserValidationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TUId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    LessonId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TeacherId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserValidation_Lesson_FK = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserValidation_Teacher_FK = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserValidation_Student_FK = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StudentPresence = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ValidationDb", x => x.UserValidationId);
+                    table.PrimaryKey("PK_UserValidation", x => x.UserValidationId);
                     table.ForeignKey(
-                        name: "FK_ValidationDb_Lesson_LessonId",
-                        column: x => x.LessonId,
+                        name: "FK_UserValidation_Lesson_UserValidation_Lesson_FK",
+                        column: x => x.UserValidation_Lesson_FK,
                         principalTable: "Lesson",
                         principalColumn: "LessonId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ValidationDb_Student_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_UserValidation_Student_UserValidation_Student_FK",
+                        column: x => x.UserValidation_Student_FK,
                         principalTable: "Student",
                         principalColumn: "StudentId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ValidationDb_Teacher_TeacherId",
-                        column: x => x.TeacherId,
+                        name: "FK_UserValidation_Teacher_UserValidation_Teacher_FK",
+                        column: x => x.UserValidation_Teacher_FK,
                         principalTable: "Teacher",
                         principalColumn: "TeacherId",
                         onDelete: ReferentialAction.Cascade);
@@ -128,26 +128,26 @@ namespace Pars_UserValidation.DAL.Migrations
                 column: "LessonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ValidationDb_LessonId",
-                table: "ValidationDb",
-                column: "LessonId");
+                name: "IX_UserValidation_UserValidation_Lesson_FK",
+                table: "UserValidation",
+                column: "UserValidation_Lesson_FK");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ValidationDb_StudentId",
-                table: "ValidationDb",
-                column: "StudentId");
+                name: "IX_UserValidation_UserValidation_Student_FK",
+                table: "UserValidation",
+                column: "UserValidation_Student_FK");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ValidationDb_TeacherId",
-                table: "ValidationDb",
-                column: "TeacherId");
+                name: "IX_UserValidation_UserValidation_Teacher_FK",
+                table: "UserValidation",
+                column: "UserValidation_Teacher_FK");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ValidationDb");
+                name: "UserValidation");
 
             migrationBuilder.DropTable(
                 name: "Student");
@@ -156,7 +156,7 @@ namespace Pars_UserValidation.DAL.Migrations
                 name: "Lesson");
 
             migrationBuilder.DropTable(
-                name: "ClassRoom");
+                name: "Classroom");
 
             migrationBuilder.DropTable(
                 name: "Teacher");

@@ -16,9 +16,9 @@ namespace Pars_UserValidation.Core.API.Services
             _userValidationDAL = userValidationDAL;
         }
 
-        public async Task AddUserValidation(UserValidationModel uservalidation)
+        public async Task<UserValidationModel> AddUserValidation(UserValidationModel uservalidation)
         {
-            await _userValidationDAL.AddUserValidation(uservalidation);
+            return await _userValidationDAL.AddUserValidation(uservalidation);      
         }
 
         public Task DeleteUserValidationById(Guid id)

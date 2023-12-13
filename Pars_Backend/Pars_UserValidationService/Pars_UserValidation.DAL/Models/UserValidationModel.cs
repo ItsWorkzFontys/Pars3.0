@@ -1,5 +1,6 @@
 ﻿using Pars_UserValidation.DAL.Enums;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Pars_UserValidation.DAL.Models
 {
@@ -8,9 +9,12 @@ namespace Pars_UserValidation.DAL.Models
         [Key]
         public Guid UserValidationId { get; set; }
         public Guid TUId { get; set; }
-        public Lesson Lesson { get; set; }
-        public Teacher Teacher { get; set; }
-        public Student Student { get; set; }
+        [ForeignKey("UserValidation_Lesson_FK")]
+        public virtual Lesson Lesson { get; set; }
+        [ForeignKey("UserValidation_Teacher_FK")]
+        public virtual Teacher Teacher { get; set; }
+        [ForeignKey("UserValidation_Student_FK")]
+        public virtual Student Student { get; set; }
         public StudentPresence StudentPresence { get; set; }
         
     }

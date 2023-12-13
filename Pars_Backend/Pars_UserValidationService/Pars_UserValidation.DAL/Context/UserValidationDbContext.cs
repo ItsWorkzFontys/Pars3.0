@@ -15,7 +15,11 @@ namespace Pars_UserValidation.DAL.Context
         {
         }
 
-        public DbSet<UserValidationModel> ValidationDb { get; set; }
+        public DbSet<UserValidationModel> UserValidation { get; set; }
+        public DbSet<Teacher> Teacher { get; set; }
+        public DbSet<Student> Student { get; set; }
+        public DbSet<Lesson> Lesson { get; set; }
+        public DbSet<ClassRoom> Classroom { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -34,7 +34,7 @@ namespace Pars_UserValidation.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         public async Task<IActionResult> AddUser(UserValidationModel userValidation)
         {
-            return Ok(_userValidationService.AddUserValidation(userValidation));
+            return Ok(await _userValidationService.AddUserValidation(userValidation));
         }
 
         [HttpPut]
