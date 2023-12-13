@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pars_UserValidation.DAL.Context;
 
@@ -11,9 +12,11 @@ using Pars_UserValidation.DAL.Context;
 namespace Pars_UserValidation.DAL.Migrations
 {
     [DbContext(typeof(UserValidationDbContext))]
-    partial class UserValidationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231211130059_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
