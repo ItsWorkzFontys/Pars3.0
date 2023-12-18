@@ -1,4 +1,5 @@
 ﻿using Gateway.Context;
+using Gateway.Dtos;
 using Gateway.Services;
 
 namespace Gateway.Repositories
@@ -15,11 +16,14 @@ namespace Gateway.Repositories
         public void Post()
         {
             GatewayDto gatewayDto = new GatewayDto();
-            gatewayDto.setTimestamp(DateTime.Now);
-            gatewayDto.setRole("teacher");
-            gatewayDto.setPage("");
-            context.GatewayDb.Add();
-            db.SaveChanges();
+            gatewayDto.Timestamp = DateTime.Now;
+            gatewayDto.Role = "teacher";
+            gatewayDto.Page = "";
+            gatewayDto.ResponseTime = 0.2f;
+            gatewayDto.ErrorCode = 404;
+            gatewayDto.ErrorDescription = "Not found";
+            context.GatewayDb.Add(gatewayDto);
+            context.SaveChanges();
         }
     }
 }

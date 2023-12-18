@@ -2,7 +2,7 @@
 
 namespace Gateway.Services
 {
-    public class GatewayService
+    public class GatewayService : IGatewayService
     {
         private readonly IGatewayRepository repository;
 

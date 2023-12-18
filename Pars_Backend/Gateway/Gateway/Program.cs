@@ -1,9 +1,12 @@
-using Ocelot.Cache;
+using Gateway.Context;
+using Gateway.Repositories;
+using Gateway.Services;
+using Microsoft.EntityFrameworkCore;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var connectionString = builder.Configuration.GetConnectionString("gatewayDb");
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -11,12 +14,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true)
+                     .AddEnvironmentVariables();
 builder.Services.AddOcelot(builder.Configuration);
 
-// Logging
-builder.Logging.ClearProviders();
-builder.Logging.AddConsole();
+builder.Services.AddTransient<IGatewayService, GatewayService>();
+builder.Services.AddTransient<IGatewayRepository, GatewayRepository>();
+builder.Services.AddDbContext<GatewayDbContext>(options => options.UseSqlServer(connectionString));
+
+//// Logging
+//builder.Logging.ClearProviders();
+//builder.Logging.AddConsole();
 
 var app = builder.Build();
 
@@ -27,13 +35,16 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+
+//app.UseAuthorization();
+
+//app.MapControllers();
+
+app.UseRouting();
+app.UseEndpoints(endpoints => endpoints.MapControllers());
 
 app.UseOcelot().Wait();
-
-app.UseAuthorization();
-
-app.MapControllers();
 
 app.Run();
 
