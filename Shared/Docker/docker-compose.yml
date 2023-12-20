@@ -102,12 +102,35 @@ services:
       - 8080:8080
     networks:
       - pars-cloud-network
+
   pars-usermanagement:
     container_name: pars-usermanagement
     image: parsusermanagement:latest
     build:
       context: ../../Pars_Backend/Pars_UserManagement
       dockerfile: ../../Pars_Backend/Pars_UserManagement/Pars_UserManagement/Dockerfile
+
+  uservalidation-mssql-db:
+    container_name: "uservalidationdb"
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      SA_PASSWORD: "Welkom12345"
+      ACCEPT_EULA: "Y"
+    ports:
+      - '1433:1433'
+      
+  pars-mysql-db:
+    container_name: "pars-mysql-db"
+    image: mysql:8.0
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      - MYSQL_DATABASE=pars
+      - MYSQL_ROOT_PASSWORD=pars
     ports:
       - 8081:8081
     networks:

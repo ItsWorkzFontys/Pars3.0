@@ -7,9 +7,26 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: $neutral-2;
+  color: $primary-text;
+
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  color: $primary-text;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+*,
+::after,
+::before {
+  box-sizing: inherit !important;
 }

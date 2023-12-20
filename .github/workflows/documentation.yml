@@ -15,10 +15,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18.17.1'
-    - name: Install puml package globally
+    - name: Install ascii doctor package globally
       run: npm install -g asciidoctor
-    - name: Install asciidoctor package globally
-      run: npm install -g puml
     - name: Install Java & Graphviz Dot
       run: |
         sudo apt-get update
@@ -51,6 +49,10 @@ jobs:
       with:
         ref: gh-pages
         token: ${{ secrets.WIKITOKEN }}
+    - name: Clear gh-pages branch
+      run: |
+        git checkout gh-pages
+        git rm -r .
     - name: Download HTML file
       uses: actions/download-artifact@v2
       with:
@@ -63,6 +65,24 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: generated-pngs
+        path: ./pngs
+    - name: Move PNGs
+      run: |
+        ls -la
+        png_folders=$(find . -type d -name "*.png")
+        for folder in $png_folders; do
+            if [[ "$folder" != "./pngs" && "$folder" != "./pngs/"* ]]; then
+                mv "$folder"/* .
+                rmdir "$folder"
+            fi
+        done
+        png_files=$(find ./pngs -type f -name "*.png")
+        for file in $png_files; do
+            mv "$file" .
+        done
+        ls -la
+        rmdir "pngs"
+        echo "Process completed!"
     - name: Commit and push
       run: |
         git config user.name "GitHub Actions"

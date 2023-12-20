@@ -1,0 +1,59 @@
+@import './src/Shared/Styling/_variables.scss';
+.sidebar-row-icon {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    
+    display: flex;
+    align-items: center;
+    height: 2vh;
+    padding: 0.5em 0.5em;
+    border-left: 4px solid $neutral-20;
+
+    
+    &:hover {
+        background-color: $neutral-alpha-10;
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: $neutral-20;
+    }
+    
+    h3 {
+        margin: 0;
+        margin-left: 1em;
+        padding: 0;
+        font-weight: 100;
+        font-size: 1em;
+    }
+
+    .icon {
+        padding: 0.5em;
+        border-radius: 15%;
+        margin-left: 0.35em;
+    }
+
+    .icon-background {
+        background-color: $communication-primary;
+        color: $neutral-0;
+        padding: 0.5em;
+        border-radius: 15%;
+        margin-right: 0.5em;
+    }
+
+   
+}  
+.header-icon {
+    height: 5vh;
+    border-left: none;
+    h3 {
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+}
+
+.active {
+    background-color: $neutral-20;
+    border-left: 4px solid $communication-primary;
+}
