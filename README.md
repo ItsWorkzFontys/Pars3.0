@@ -61,7 +61,7 @@ To fully use this project, all services need to be running.
 This can be done either through your IDE for development or through the docker-compose file.
 To start working with this project:
 - Clone the repository to your device
-- Make sure you are on the Main branche.
+- Make sure you are on the Main branch.
 - Open the repository with your IDE of choice.
 - Start by routing into the correct repository.
 ```console
@@ -78,7 +78,7 @@ The frontend is written in React using Typescript. The frontend can be used by e
 To start working with this project:
 - Install node.js Latest Stable version [link](https://nodejs.org/en)
 - Clone the repository to your device.
-- Make sure you are on the Main branche.
+- Make sure you are on the Main branch.
 - Open the repository with your IDE of choice.
 - Start by routing to the Pars_Frontend folder.
 - Start by installing necessary packages.
@@ -91,7 +91,7 @@ npm run dev
 ```
 
 ## Useful Sources
-[What are microservices?](https://microservices.io/)
+[What are microservices?](https://microservices.io/)  
 [Backlog with open issues](https://github.com/orgs/ItsWorkzFontys/projects/1)
 
 
