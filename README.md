@@ -87,7 +87,7 @@ npm install
 ```
 - Run the application 
 ```console
-npm run dev
+npm start
 ```
 
 ## Useful Sources
