@@ -1,0 +1,94 @@
+name: Documentation generation and publish
+
+on:
+    push:
+        branches: [ main, develop ]
+    workflow_dispatch:
+
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.17.1'
+    - name: Install ascii doctor package globally
+      run: npm install -g asciidoctor
+    - name: Install Java & Graphviz Dot
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y default-jre
+        sudo apt-get install -y graphviz
+    - name: Run bash script
+      run: |
+        sed -i -e 's/\r$//' ./Shared/Documentation/generate_documentation.sh
+        chmod +x ./Shared/Documentation/generate_documentation.sh
+        ./Shared/Documentation/generate_documentation.sh
+      shell: bash
+    - name: Upload PNG files
+      uses: actions/upload-artifact@v2
+      with:
+        name: generated-pngs
+        path: ./Shared/Documentation/*.png
+    - name: Upload HTML file
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-html
+        path: ./Shared/Documentation/test.html
+
+  update-gh-pages:
+    needs: generate-docs
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout gh-pages branch
+      uses: actions/checkout@v2
+      with:
+        ref: gh-pages
+        token: ${{ secrets.WIKITOKEN }}
+    - name: Clear gh-pages branch
+      run: |
+        git checkout gh-pages
+        git rm -r .
+    - name: Download HTML file
+      uses: actions/download-artifact@v2
+      with:
+        name: test-html
+    - name: Move HTML file
+      run: |
+        mv test.html index.html
+        ls -la
+    - name: Download PNG files
+      uses: actions/download-artifact@v2
+      with:
+        name: generated-pngs
+        path: ./pngs
+    - name: Move PNGs
+      run: |
+        ls -la
+        png_folders=$(find . -type d -name "*.png")
+        for folder in $png_folders; do
+            if [[ "$folder" != "./pngs" && "$folder" != "./pngs/"* ]]; then
+                mv "$folder"/* .
+                rmdir "$folder"
+            fi
+        done
+        png_files=$(find ./pngs -type f -name "*.png")
+        for file in $png_files; do
+            mv "$file" .
+        done
+        ls -la
+        rmdir "pngs"
+        echo "Process completed!"
+    - name: Commit and push
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "github-actions@github.com"
+        git add .
+        git commit -m "Update GitHub Pages"
+        git push https://${{ secrets.WIKITOKEN }}@github.com/${{ github.repository }}.git HEAD:gh-pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.WIKITOKEN }}

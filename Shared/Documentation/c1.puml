@@ -1,0 +1,29 @@
+@startuml c1
+
+!include <C4/C4_Container>
+!include <cloudinsight/mysql>
+
+title PARS3.0 Container Diagram
+
+LAYOUT_WITH_LEGEND()
+
+'people
+Person(Admin, "Administrator", "")
+Person(Teacher, "Teacher", "")
+
+'systems
+System(PARS, "PARS3.0", "Student attendance registration system")
+
+'external systems
+System_Ext(Xedule, "Xedule", "Schedule data provider", "")
+System_Ext(ODS, "ODS2", "Student data provider", "")
+System_Ext(MicrosoftAuth, "Microsoft Authentication", "", "")
+
+'links
+Rel(Admin, PARS, "Uses", "")
+Rel(Teacher, PARS, "Uses", "")
+Rel(PARS, Xedule, "Uses", "SQL Job")
+Rel(PARS, ODS, "Uses", "SQL Job")
+Rel(PARS, MicrosoftAuth, "Uses", "HTTPS")
+
+@enduml

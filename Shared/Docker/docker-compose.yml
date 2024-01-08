@@ -1,65 +1,127 @@
 version: '3.8'
 services:
-  rabbitmq:
-    image: rabbitmq:3-management-alpine
-    container_name: 'rabbitmq'
-    ports:
-      - 5672:5672
-      - 15672:15672
-    volumes:
-      - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
-      - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
-    command: ["bash", "-c", "chmod 400 /var/lib/rabbitmq/.erlang.cookie; rabbitmq-server"]
-    networks:
-      - rabbitmq-go-net
-  ods2-mysql-db:
-    container_name: "ods2-mysql-db"
+  # rabbitmq:
+  #   image: rabbitmq:3-management-alpine
+  #   container_name: 'rabbitmq'
+  #   ports:
+  #     - 5672:5672
+  #     - 15672:15672
+  #   volumes:
+  #     - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+  #     - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+  #   command: ["bash", "-c", "chmod 400 /var/lib/rabbitmq/.erlang.cookie; rabbitmq-server"]
+  #   networks:
+  #     - rabbitmq-go-net
+  # ods2-mysql-db:
+  #   container_name: "ods2-mysql-db"
+  #   image: mysql:8.0
+  #   cap_add:
+  #     - SYS_NICE
+  #   restart: always
+  #   environment:
+  #     - MYSQL_DATABASE=ods2
+  #     - MYSQL_ROOT_PASSWORD=ods2
+  #   ports:
+  #     - '3306:3306'
+  #   volumes:
+  #     - mysql-db:/var/lib/mysql
+  #     - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  #   networks:
+  #     - pars-cloud-network
+  # schedule-mysql-db:
+  #   container_name: "schedule-mysql-db"
+  #   image: mysql:8.0
+  #   cap_add:
+  #     - SYS_NICE
+  #   restart: always
+  #   environment:
+  #     - MYSQL_DATABASE=schedule
+  #     - MYSQL_ROOT_PASSWORD=schedule
+  #   ports:
+  #     - '3307:3307'
+  #   volumes:
+  #     - mysql-db:/var/lib/mysql
+  #     - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  #   networks:
+  #     - pars-cloud-network
+  # configuration-mysql-db:
+  #   container_name: "configuration-mysql-db"
+  #   image: mysql:8.0
+  #   cap_add:
+  #     - SYS_NICE
+  #   restart: always
+  #   environment:
+  #     - MYSQL_DATABASE=configuration
+  #     - MYSQL_ROOT_PASSWORD=configuration
+  #   ports:
+  #     - '3308:3308'
+  #   volumes:
+  #     - mysql-db:/var/lib/mysql
+  #     - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  #   networks:
+  #     - pars-cloud-network
+  # pars-mysql-db:
+  #   container_name: "pars-mysql-db"
+  #   image: mysql:8.0
+  #   cap_add:
+  #     - SYS_NICE
+  #   restart: always
+  #   environment:
+  #     - MYSQL_DATABASE=pars
+  #     - MYSQL_ROOT_PASSWORD=pars
+  #   ports:
+  #     - '3309:3309'
+  #   volumes:
+  #     - mysql-db:/var/lib/mysql
+  #     - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  #   networks:
+  #     - pars-cloud-network
+  gateway-mysql-db:
+    container_name: "gateway-mysql-db"
     image: mysql:8.0
     cap_add:
       - SYS_NICE
     restart: always
     environment:
-      - MYSQL_DATABASE=ods2
-      - MYSQL_ROOT_PASSWORD=ods2
+      - MYSQL_DATABASE=gateway
+      - MYSQL_ROOT_PASSWORD=gateway
     ports:
-      - '3306:3306'
+      - '3310:3310'
     volumes:
       - mysql-db:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - pars-cloud-network
-  schedule-mysql-db:
-    container_name: "schedule-mysql-db"
-    image: mysql:8.0
+  gateway:
+    container_name: gateway
+    image: gateway:latest
+    build:
+      context: ../../Pars_Backend/Gateway
+      dockerfile: ../../Pars_Backend/Gateway/Gateway/Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - pars-cloud-network
+
+  pars-usermanagement:
+    container_name: pars-usermanagement
+    image: parsusermanagement:latest
+    build:
+      context: ../../Pars_Backend/Pars_UserManagement
+      dockerfile: ../../Pars_Backend/Pars_UserManagement/Pars_UserManagement/Dockerfile
+
+  uservalidation-mssql-db:
+    container_name: "uservalidationdb"
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
     cap_add:
       - SYS_NICE
     restart: always
     environment:
-      - MYSQL_DATABASE=schedule
-      - MYSQL_ROOT_PASSWORD=schedule
+      SA_PASSWORD: "Welkom12345"
+      ACCEPT_EULA: "Y"
     ports:
-      - '3307:3307'
-    volumes:
-      - mysql-db:/var/lib/mysql
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - pars-cloud-network
-  configuration-mysql-db:
-    container_name: "configuration-mysql-db"
-    image: mysql:8.0
-    cap_add:
-      - SYS_NICE
-    restart: always
-    environment:
-      - MYSQL_DATABASE=configuration
-      - MYSQL_ROOT_PASSWORD=configuration
-    ports:
-      - '3308:3308'
-    volumes:
-      - mysql-db:/var/lib/mysql
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
-    networks:
-      - pars-cloud-network
+      - '1433:1433'
+      
   pars-mysql-db:
     container_name: "pars-mysql-db"
     image: mysql:8.0
@@ -70,12 +132,19 @@ services:
       - MYSQL_DATABASE=pars
       - MYSQL_ROOT_PASSWORD=pars
     ports:
-      - '3309:3309'
-    volumes:
-      - mysql-db:/var/lib/mysql
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - 8081:8081
     networks:
       - pars-cloud-network
+  # pars-validationdashboard:
+  #   container_name: pars-validationdashboard
+  #   image: parsvalidationdashboard:latest
+  #   build:
+  #     context: ../../Pars_Backend/Pars_ValidationDashboard
+  #     dockerfile: ../../Pars_Backend/Pars_ValidationDashboard/Pars_ValidationDashboard/Dockerfile
+  #   ports:
+  #     - 8082:8082
+  #   networks:
+  #     - pars-cloud-network
 volumes:
   mysql-db:
     driver: local
