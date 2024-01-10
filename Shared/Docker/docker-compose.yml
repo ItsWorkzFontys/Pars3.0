@@ -121,7 +121,19 @@ services:
       ACCEPT_EULA: "Y"
     ports:
       - '1433:1433'
-      
+
+  schedulemanagement-mssql-db:
+    container_name: "schedulemanagementdb"
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    cap_add:
+      - SYS_NICE
+    restart: always
+    environment:
+      SA_PASSWORD: "Welkom12345"
+      ACCEPT_EULA: "Y"
+    ports:
+      - '20116:20116' 
+
   pars-mysql-db:
     container_name: "pars-mysql-db"
     image: mysql:8.0

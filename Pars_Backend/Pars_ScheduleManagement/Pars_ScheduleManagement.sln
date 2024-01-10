@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pars_ScheduleManagement", "Pars_ScheduleManagement\Pars_ScheduleManagement.csproj", "{84281D51-EA96-46C4-BC7C-54DD3D24DFF7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pars_ScheduleManagement.API", "Pars_ScheduleManagement.API\Pars_ScheduleManagement.API.csproj", "{90C7E86B-44EC-4E06-A6C3-B3C4A84C0995}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pars_ScheduleManagement.Core", "Pars_ScheduleManagement.Core\Pars_ScheduleManagement.Core.csproj", "{15B72A83-0396-46C3-9A0F-33D4C5E75268}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pars_Schedulemanagement.Core.API", "Pars_Schedulemanagement.Core.API\Pars_Schedulemanagement.Core.API.csproj", "{E1385617-0F08-4D74-B9B4-8B7FF0AFC834}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pars_ScheduleManagement.Repository", "Pars_ScheduleManagement.Repository\Pars_ScheduleManagement.Repository.csproj", "{81825AAB-CB26-41FC-A4B7-CD50092B9453}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pars_ScheduleManagement.Dependency", "Pars_ScheduleManagement.Dependency\Pars_ScheduleManagement.Dependency.csproj", "{A3F2E8C3-5049-4724-A7CE-FF6E064A19FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pars_ScheduleManagement.DAL", "Pars_ScheduleManagement.DAL\Pars_ScheduleManagement.DAL.csproj", "{57069F85-8DE8-42FE-95C9-E30331FCD303}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{84281D51-EA96-46C4-BC7C-54DD3D24DFF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{84281D51-EA96-46C4-BC7C-54DD3D24DFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{84281D51-EA96-46C4-BC7C-54DD3D24DFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{84281D51-EA96-46C4-BC7C-54DD3D24DFF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{15B72A83-0396-46C3-9A0F-33D4C5E75268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15B72A83-0396-46C3-9A0F-33D4C5E75268}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15B72A83-0396-46C3-9A0F-33D4C5E75268}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15B72A83-0396-46C3-9A0F-33D4C5E75268}.Release|Any CPU.Build.0 = Release|Any CPU
-		{81825AAB-CB26-41FC-A4B7-CD50092B9453}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{81825AAB-CB26-41FC-A4B7-CD50092B9453}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{81825AAB-CB26-41FC-A4B7-CD50092B9453}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{81825AAB-CB26-41FC-A4B7-CD50092B9453}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3F2E8C3-5049-4724-A7CE-FF6E064A19FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3F2E8C3-5049-4724-A7CE-FF6E064A19FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3F2E8C3-5049-4724-A7CE-FF6E064A19FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3F2E8C3-5049-4724-A7CE-FF6E064A19FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C7E86B-44EC-4E06-A6C3-B3C4A84C0995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C7E86B-44EC-4E06-A6C3-B3C4A84C0995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C7E86B-44EC-4E06-A6C3-B3C4A84C0995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C7E86B-44EC-4E06-A6C3-B3C4A84C0995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1385617-0F08-4D74-B9B4-8B7FF0AFC834}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1385617-0F08-4D74-B9B4-8B7FF0AFC834}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1385617-0F08-4D74-B9B4-8B7FF0AFC834}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1385617-0F08-4D74-B9B4-8B7FF0AFC834}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57069F85-8DE8-42FE-95C9-E30331FCD303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57069F85-8DE8-42FE-95C9-E30331FCD303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57069F85-8DE8-42FE-95C9-E30331FCD303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57069F85-8DE8-42FE-95C9-E30331FCD303}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
