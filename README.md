@@ -55,6 +55,12 @@ The ScheduleManagement Service is responsible for getting the schedules of teach
 ### API Gateway
 The API Gateway is used as a way for the frontend to communicate with the different backend services. This way the frontend doesn't have to talk to each backend service specifically.
 
+### Microsoft login frontend
+For future development using Microsoft auth we used the following guide to create a basic set up in the React frontend
+- https://learn.microsoft.com/en-us/entra/external-id/customers/tutorial-single-page-app-react-sign-in-prepare-tenant
+This guide will give a step-by-step guide on how to create a tenant and how to retrieve information from them.
+The project was setup with only organisation accounts in mind as such if any part of the login does not work this is likely one
+of the first causes to look at.
 
 ## Installation of the project
 To fully use this project, all services need to be running. 
